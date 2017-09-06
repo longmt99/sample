@@ -1,0 +1,12 @@
+{
+	
+        
+    "/students": {
+         "options": "{{../../../common-api/swagger/commons/generic-options.json}}",
+        "post": "{{student/createStudent.json}}",
+        "get": "{{student/getStudent.json}}",
+        "put": "{{student/updateStudent.json}}",
+        "patch": "{{student/patchStudent.json}}",
+        "delete": "{{student/deleteStudent.json}}"
+    }
+}

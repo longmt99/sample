@@ -1,0 +1,28 @@
+{
+	"operation": "/students",
+	"httpMethod": "POST",
+	"body": {
+		"email": "student@email.com",
+		"name": "tenant.dummy",
+		"address1": "Address 1",
+		"address2": "Address 2",
+		"contactNumber": "+82101234567",
+		"city": "SG",
+		"state": "100000",
+		"countryId": "SG",
+		"zipCode": "123456",
+		"officePhone1": "+82101234567",
+		"officePhone2": "+82101234567",
+		"phone": "+82101234567",
+		"fax": "12345678",
+		"startDayOfWeek": "1",
+		"academicYearStart": "2007",
+		"academicYearEnd": "2017",
+		"currency": "USD",
+		"timeZone": "GMT+8",
+		"lastSeedAt": "2017"
+	},
+	"queryParams": {
+		"tenantKey": "tdkey"
+	}
+}

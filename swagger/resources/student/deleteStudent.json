@@ -1,0 +1,61 @@
+{
+	"tags": [
+		"student-rest-service"
+	],
+	"summary": "DeleteStudent",
+	"description": "DeleteStudent",
+	"operationId": "DeleteStudent",
+	"consumes": [
+		"application/json"
+	],
+	"parameters": [
+		{
+			"name": "id",
+			"in": "query",
+			"description": "ID of student",
+			"required": true,
+			"type": "string"
+		},
+		{
+			"name": "Authorization",
+			"in": "header",
+			"description": "tenantKey",
+			"required": true,
+			"type": "string"
+		}
+	],
+	"responses": {
+		"200": {
+			"description": "Student successfully deleted ",
+			"schema": {
+				"$ref": "#/definitions/Student"
+			},
+			"headers": "{{../../../../common-api/swagger/commons/response-headers.json}}"
+		},
+		"422": "{{../../../../common-api/swagger/commons/response-422.json}}",
+		"403": "{{../../../../common-api/swagger/commons/response-403.json}}",
+		"500": "{{../../../../common-api/swagger/commons/response-500.json}}"
+	},
+	"x-amazon-apigateway-integration": {
+		"type": "aws",
+	    "httpMethod": "POST",
+	    "uri": "{{../aws-lambda-uri-student.txt}}",
+	    "credentials": "{{../../../../common-api/swagger/commons/aws-lambda-credentials.txt}}",
+	    "requestTemplates": {
+	      "application/json": "{{lambda/delete.template}}"
+	    },
+		"responses": {
+			".*:422[0-9]{2}.*": "{{../../../../common-api/swagger/commons/aws-response-422.json}}",
+			".*:403[0-9]{2}.*": "{{../../../../common-api/swagger/commons/aws-response-403.json}}",
+			".*:404[0-9]{2}.*": "{{../../../../common-api/swagger/commons/aws-response-404.json}}",
+			"(.*:500[0-9]{2}.*)|(.*Task timed out.*)": "{{../../../../common-api/swagger/commons/aws-response-500.json}}",
+			"default": {
+				"statusCode": "200",
+				"responseParameters": "{{../../../../common-api/swagger/commons/aws-response-parameters.json}}",
+				"responseTemplates": {
+					"application/json": "__passthrough__"
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,18 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "@@version_name",
+        "title": "Gateway @@env_name @@api_name"
+    },
+    "basePath": "/@@env_name",
+    "host":"mfyfydgmwf.execute-api.us-east-1.amazonaws.com",
+    "schemes": [
+        "https"
+    ],
+    "securityDefinitions": {
+    },
+    
+    "tags": "{{tags/tags.json}}",
+    "paths": "{{resources/resources.json}}",
+    "definitions": "{{models/models.json}}"
+}

@@ -1,0 +1,13 @@
+{
+  "operation": "/students",
+  "httpMethod": "PATCH",
+  "body": {
+    "id": "1",
+    "name": "student624.dummy",
+    "address1": "Address 1",
+    "address2": "Address 2"
+  },
+  "queryParams": {
+    "tenantKey": "tdkey"
+  }
+}

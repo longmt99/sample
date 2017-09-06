@@ -1,0 +1,10 @@
+[
+	{
+		"name": "student-rest-service",
+		"description": "Student Rest Services"
+	},
+	{
+		"name": "cors",
+		"description": "API to support CORS request"
+	}
+]

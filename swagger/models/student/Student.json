@@ -1,0 +1,113 @@
+{
+	"type": "object",
+	"properties": {
+		"addressLine1": {
+			"type": "string"
+		},
+		"addressLine2": {
+			"type": "string"
+		},
+		"admissionNo": {
+			"type": "string"
+		},
+		"birthPlace": {
+			"type": "string"
+		},
+		"bloodGroup": {
+			"type": "string"
+		},
+		"city": {
+			"type": "string"
+		},
+		"classRollNo": {
+			"type": "string"
+		},
+		"countryId": {
+			"type": "string"
+		},
+		"dob": {
+			"type": "string"
+		},
+		"email": {
+			"type": "string"
+		},
+		"firstName": {
+			"type": "string"
+		},
+		"gender": {
+			"type": "string"
+		},
+		"imediateContactId": {
+			"type": "string"
+		},
+		"isEmailEnabled": {
+			"type": "string"
+		},
+		"isSmsEnabled": {
+			"type": "string"
+		},
+		"language": {
+			"type": "string"
+		},
+		"lastName": {
+			"type": "string"
+		},
+		"libraryCard": {
+			"type": "string"
+		},
+		"middleName": {
+			"type": "string"
+		},
+		"nationalityId": {
+			"type": "string"
+		},
+		"phone1": {
+			"type": "string"
+		},
+		"phone2": {
+			"type": "string"
+		},
+		"photoContentType": {
+			"type": "string"
+		},
+		"photoData": {
+			"type": "string"
+		},
+		"photoFileName": {
+			"type": "string"
+		},
+		"photoFileSize": {
+			"type": "string"
+		},
+		"pinCode": {
+			"type": "string"
+		},
+		"religion": {
+			"type": "string"
+		},
+		"rollNumber": {
+			"type": "string"
+		},
+		"schoolId": {
+			"type": "string"
+			
+		},
+		"siblingId": {
+			"type": "string"
+			
+		},
+		"state": {
+			"type": "string"
+		},
+		"status": {
+			"type": "string"
+		},
+		"categoryId": {
+			"type": "string"
+			
+		},
+		"userId": {
+			"type": "string"
+		}
+	}
+}

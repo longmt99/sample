@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.saas.mapping.StudentMapper">
+	<resultMap id="studentResult" type="com.saas.model.student.Student">
+		<id property="id" column="id" />
+		<result property="admissionNo" column="admission_no" />
+		<result property="classRollNo" column="class_roll_no" />
+		<result property="admissionDate" column="admission_date" />
+		<result property="phone" column="phone" />
+		<result property="email" column="email" />
+		<result property="schoolId" column="school_id" />
+		<result property="parentId" column="parent_id" />
+		<result property="batchId" column="batch_id" />
+		<result property="firstName" column="first_name" />
+		<result property="middleName" column="middle_name" />
+		<result property="lastName" column="last_name" />
+		<result property="dob" column="dob" />
+		<result property="gender" column="gender" />
+		<result property="bloodGroup" column="blood_group" />
+		<result property="birthPlace" column="birth_place" />
+		<result property="nationalityId" column="nationality_id" />
+		<result property="language" column="language" />
+		<result property="religion" column="religion" />
+		<result property="categoryId" column="category_id" />
+		<result property="addressLine1" column="address_line1" />
+		<result property="addressLine2" column="address_line2" />
+		<result property="city" column="city" />
+		<result property="state" column="state" />
+		<result property="pinCode" column="pin_code" />
+		<result property="countryId" column="country_id" />
+		<result property="imediateContactId" column="immediate_contact_id" />
+		<result property="status" column="status" />
+		<result property="smsStatus" column="smsStatus" />
+		<result property="emailStatus" column="email_status" />
+		<result property="payStatus" column="pay_status" />
+		<result property="photoFileName" column="photo_file_name" />
+		<result property="photoContentType" column="photo_content_type" />
+		<result property="photoData" column="photo_data" />
+		<result property="photoFileSize" column="photo_file_size" />
+		<result property="siblingId" column="sibling_id" />
+		<result property="photoUpdateAt" column="photo_update_at" />
+		<result property="rollNumber" column="roll_number" />
+		<result property="libraryCard" column="library_card" />
+		<result property="createAt" column="create_at" />
+		<result property="updateAt" column="update_at" />
+	</resultMap>
+	
+	<select id="getStudent" parameterType="Long" resultMap="studentResult">
+		SELECT *
+		FROM student 
+		WHERE id = #{id}
+	</select>
+	<select id="getStudentByEmail" parameterType="String" resultMap="studentResult">
+		SELECT *
+		FROM student
+		WHERE email = #{email}
+	</select>
+	<select id="createStudent" parameterType="com.saas.model.student.Student" resultType="Long">
+		INSERT INTO student(admission_no,school_id ,parent_id , batch_id ,phone, email, class_roll_no, admission_date, first_name, middle_name, last_name, 
+				 dob , gender, blood_group, birth_place, nationality_id , language, religion, category_id ,
+			 	address_line1, address_line2,  city, state, pin_code, country_id , immediate_contact_id ,
+			  	sms_status , status,  	pay_status ,  
+			  	email_status , sibling_id, photo_update_at, roll_number, library_card ,create_at) 
+		VALUES (#{admissionNo},  #{schoolId},#{parentId},#{batchId},#{phone}, #{email}, #{classRollNo},
+			   #{admissionDate}, #{firstName}, #{middleName}, #{lastName},  #{dob}, #{gender}, #{bloodGroup},
+			   #{birthPlace}, #{nationalityId}, #{language}, #{religion}, #{categoryId}, #{addressLine1}, 
+			   #{addressLine2},#{city}, #{state}, #{pinCode}, #{countryId}, 
+			   #{imediateContactId}, #{smsStatus},   #{status}, #{payStatus}, 
+			   #{emailStatus},#{siblingId}, #{photoUpdateAt}, #{rollNumber}, #{libraryCard}, NOW()) 
+		RETURNING id
+	</select>
+	<select id="searchStudent" parameterType="map"  resultMap="studentResult">
+		SELECT
+		   *
+	        FROM student 
+				WHERE 1=1 
+	         	<if test="Student.id > 0"> AND  id = #{Student.id} </if>
+	         	<if test="Student.nationalityId > 0"> AND  nationality_id = #{Student.nationalityId} </if>
+	         	<if test="Student.countryId > 0"> AND  country_id = #{Student.countryId} </if>
+	         	<if test="Student.payStatus > 0"> AND  has_paid_fee = #{Student.payStatus} </if>
+	         	<if test="Student.admissionNo != null"> AND  admission_no  = #{Student.admissionNo} </if>
+	         	<if test="Student.classRollNo != null"> AND  class_roll_no  = #{Student.classRollNo} </if>
+	        	<if test="Student.email != null"> AND  email  = #{Student.email} </if>
+	        	<if test="Student.firstName != null"> AND  first_name  = #{Student.firstName} </if>
+	        	<if test="Student.phone != null"> AND  phone  = #{Student.phone} </if>
+	        	<if test="Student.addressLine1 != null"> AND  address_line1  = #{Student.addressLine1} </if>
+	        	<if test="Student.status != null"> AND  status  = #{Student.status} </if>
+		         OFFSET  #{Paging.start}  LIMIT  #{Paging.limit}
+	</select>
+	
+	<update id="updateStudent" parameterType="com.saas.model.student.Student">
+		UPDATE student	SET
+		<if test="admissionNo != null and admissionNo != ''">  admission_no  = #{admissionNo}, </if>
+		<if test="classRollNo != null and classRollNo != ''">  class_roll_no  = #{classRollNo}, </if>
+		<if test="firstName != null and firstName != ''">  first_name  = #{firstName}, </if>		 
+		 <if test="lastName != null and lastName != ''">  last_name  = #{lastName}, </if>
+		 <if test="middleName != null and middleName != ''">  middle_name  = #{middleName}, </if>
+		 <if test="batchId >0 ">  batch_id  = #{batchId}, </if>
+		 <if test="payStatus != null and payStatus != ''">  pay_status  = #{payStatus}, </if>
+		 <if test="pinCode != null and pinCode != ''">  pin_code  = #{pinCode}, </if>
+	      update_at = NOW()
+		WHERE id = #{id}
+	</update>
+			
+	<update id="deleteStudent" parameterType="Long">
+		DELETE FROM student
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

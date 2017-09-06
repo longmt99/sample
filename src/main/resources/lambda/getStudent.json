@@ -1,0 +1,8 @@
+{
+  "operation": "/students",
+  "httpMethod": "GET",
+  "queryParams": {
+     "id": "1",
+    "tenantKey": "tdkey"
+  }
+}

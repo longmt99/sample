@@ -1,0 +1,5 @@
+{
+    "Error": "{{../../../common-api/swagger/models/Error.json}}",
+    "Rest": "{{../../../common-api/swagger/models/Rest.json}}",
+    "Student":"{{student/Student.json}}"        
+}
